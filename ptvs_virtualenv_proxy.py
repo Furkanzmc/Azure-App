@@ -1,4 +1,4 @@
- # ############################################################################
+ #
  #
  # Copyright (c) Microsoft Corporation.
  #
@@ -10,7 +10,7 @@
  #
  # You must not remove this notice, or any other, from this software.
  #
- # ###########################################################################
+ #
 
 import datetime
 import os
@@ -79,6 +79,7 @@ def get_wsgi_handler(handler_name):
             break
         except ImportError:
             module_name, _, callable_name = module_name.rpartition('.')
+            print("Importing module: " + module_name)
             should_call = callable_name.endswith('()')
             callable_name = callable_name[:-2] if should_call else callable_name
             name_list.insert(0, (callable_name, should_call))
